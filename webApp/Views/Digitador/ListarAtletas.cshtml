@@ -1,0 +1,42 @@
+﻿@model IEnumerable<DTOs.AtletaDTOs.DtoListarAtletas>
+
+@{
+    ViewData["Title"] = "ListarAtletas";
+}
+
+<h1>ListarAtletas</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            
+            <th>
+                @Html.DisplayNameFor(model => model.PaisNombre)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NombreCompleto)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+          
+            <td>
+                @Html.DisplayFor(modelItem => item.PaisNombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.NombreCompleto)
+            </td>
+            <td>
+                    @Html.ActionLink("Agregar Disciplina", "AgregarDisciplina", new { id = item.id }) |
+                @Html.ActionLink("Disciplinas", "ListarDisciplina")|
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

@@ -1,0 +1,58 @@
+﻿@model IEnumerable<DTOs.UsuarioDTOs.DtoListarUsuarios>
+
+@{
+    ViewData["Title"] = "ListarUsuarios";
+}
+
+<h1>ListarUsuarios</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Email)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Rol)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.FechaIngreso)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.AdminQueDioAltaId)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rol)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaIngreso)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.AdminQueDioAltaId)
+            </td>
+            <td>
+                    @Html.ActionLink("Editar", "EditarUsuario", new { id = item.id }) |
+                    @Html.ActionLink("Delete", "BajaUsuario", new { id = item.id })
+            </td>
+        </tr>
+}
+    </tbody>
+</table>

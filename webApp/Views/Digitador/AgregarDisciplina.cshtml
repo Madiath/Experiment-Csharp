@@ -1,0 +1,43 @@
+﻿@model DTOs.DisciplinaDTOs.DtoAgregarDisciplina
+
+@{
+    ViewData["Title"] = "AgregarDisciplina";
+}
+
+<h1>AgregarDisciplina</h1>
+
+<h4>DtoAgregarDisciplina</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="AgregarDisciplina">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="IdAtleta" class="control-label"></label>
+                <input asp-for="IdAtleta" class="form-control" readonly/>
+                <span asp-validation-for="IdAtleta" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <select asp-for="IdsDisciplinas" multiple="multiple">
+                    @foreach (var disciplina in Model.ListaDisciplina)
+                    {
+                        <option value="@disciplina.Id">@disciplina.Nombre</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<p>@ViewBag.msg</p>
+
+<div>
+    <a asp-action="ListarAtletas">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

@@ -1,0 +1,39 @@
+﻿@model IEnumerable<DTOs.EventoAtletaDTOs.EventoAtletaDto>
+
+@{
+    ViewData["Title"] = "ListarAtletasEvento";
+}
+
+<h1>ListarAtletasEvento</h1>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Atleta.NombreCompleto)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Puntaje)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Atleta.NombreCompleto)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Puntaje)
+            </td>
+                <td>
+                    @Html.ActionLink("Dar puntuacion", "ActualizarPuntuacion", new { idAtleta = item.Atleta.Id, idEvento = item.Evento.Id }) |
+                </td>
+        </tr>
+}
+    </tbody>
+</table>
