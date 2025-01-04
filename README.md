@@ -30,6 +30,7 @@ The DTOs Library is used to define data transfer objects (DTOs).
 These are specialized data structures used in use cases and views, rather than exposing entities directly. 
 The library also includes mappers to transform data between entities and DTOs, ensuring a clear separation between layers.
 
+
                         +-------------------+
                         |   Frameworks &   |
                         |      Drivers     |
@@ -48,6 +49,10 @@ The library also includes mappers to transform data between entities and DTOs, e
 |   External        |            v                       v
 |   Interfaces      +<--------- Use Cases          Entities
 +-------------------+
+
+
+
+
 
 The project, in general, lacks proper control in terms of exception handling. 
 Many exceptions that occur are not being managed effectively within the code, which could lead to runtime issues. 
