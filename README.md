@@ -58,4 +58,4 @@ The project, in general, lacks proper control in terms of exception handling.
 Many exceptions that occur are not being managed effectively within the code, which could lead to runtime issues. 
 Additionally, it contains a significant amount of text in my native language(Spanish), which might need to be standardized.
 
-It’s worth noting that this project was developed in just one or two weeks, which may explain some of the current limitations.
+It’s worth noting that this project was my first mvc proyect and this proyect developed in just one or two weeks, which may explain some of the current limitations and errors.
