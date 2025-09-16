@@ -1,35 +1,50 @@
-To make this solution work, you will need the following NuGet packages:
+Paquetes NuGet necesarios
 
-Microsoft.AspNetCore.Authentication.JwtBearer: For handling JSON Web Token (JWT) authentication.
-Microsoft.EntityFrameworkCore: For using Entity Framework Core to manage database access.
-Microsoft.EntityFrameworkCore.Design: To enable migrations and database scaffolding.
-Microsoft.IdentityModel.JsonWebTokens: For handling JWT tokens and token validation.
-Microsoft.VisualStudio.Web.CodeGeneration.Design: For enabling code generation tools.
-Swashbuckle.AspNetCore: To generate Swagger documentation for APIs.
-Architecture Overview
-The project consists of two main components that communicate with a shared library:
+- Microsoft.AspNetCore.Authentication.JwtBearer: Para manejar la autenticación con JSON Web Token (JWT).
+- Microsoft.EntityFrameworkCore: Para usar Entity Framework Core y administrar el acceso a la base de datos.
+- Microsoft.EntityFrameworkCore.Design: Para habilitar migraciones y scaffolding de base de datos.
+- Microsoft.IdentityModel.JsonWebTokens: Para manejar tokens JWT y su validación.
+- Microsoft.VisualStudio.Web.CodeGeneration.Design: Para habilitar herramientas de generación de código.
+- Swashbuckle.AspNetCore: Para generar documentación Swagger de las APIs.
 
-Logic of the App: This library is responsible for handling application logic and communicates with:
+------------------------------------------------------------
 
-Logic of the Business: Implements business rules and domain-specific logic.
-DTOs Library: Contains data transfer objects (DTOs) and mapping logic.
-Logic of Access to Database:
+Arquitectura – Descripción General
 
-This layer manages database operations and communicates with the business logic.
-It uses DbContext to define entities and manage database migrations.
-SQL Server is used to store and manage the application data.
-Dependency Injection
-All repositories and use cases are injected into the Program class of both the web application and API projects. 
-This ensures proper dependency management and loose coupling between components.
+El proyecto consta de dos componentes principales que se comunican con una librería compartida:
 
-Use of Interfaces
-All use cases and repositories are managed via their respective interfaces. This approach adheres to the Dependency Inversion Principle, enhancing testability and maintainability.
+Lógica de la Aplicación
+Esta librería se encarga de manejar la lógica de la aplicación y se comunica con:
+- Lógica de Negocio: Implementa reglas de negocio y lógica específica del dominio.
+- Librería de DTOs: Contiene Data Transfer Objects (DTOs) y lógica de mapeo.
 
-DTOs Library
-The DTOs Library is used to define data transfer objects (DTOs). 
-These are specialized data structures used in use cases and views, rather than exposing entities directly. 
-The library also includes mappers to transform data between entities and DTOs, ensuring a clear separation between layers.
+Lógica de Acceso a la Base de Datos
+- Administra las operaciones de base de datos y se comunica con la lógica de negocio.
+- Utiliza DbContext para definir entidades y gestionar migraciones.
+- SQL Server se emplea como gestor de base de datos para almacenar y administrar los datos de la aplicación.
 
+------------------------------------------------------------
+
+Inyección de Dependencias
+Todos los repositorios y casos de uso se inyectan en la clase Program de los proyectos WebApp y API.
+Esto garantiza una correcta gestión de dependencias y un bajo acoplamiento entre los componentes.
+
+------------------------------------------------------------
+
+Uso de Interfaces
+Todos los casos de uso y repositorios se gestionan mediante sus interfaces respectivas.
+Este enfoque sigue el Principio de Inversión de Dependencias (DIP), lo que mejora la testabilidad y la mantenibilidad.
+
+------------------------------------------------------------
+
+Librería de DTOs
+La librería de DTOs se utiliza para definir objetos de transferencia de datos (Data Transfer Objects).
+- Estos son estructuras especializadas que se usan en los casos de uso y vistas, en lugar de exponer directamente las entidades.
+- También incluye mapeadores para transformar datos entre entidades y DTOs, asegurando una separación clara entre capas.
+
+------------------------------------------------------------
+
+Diagrama de Capas (visión simplificada)
 
                         +-------------------+
                         |   Frameworks &   |
@@ -50,12 +65,11 @@ The library also includes mappers to transform data between entities and DTOs, e
 |   Interfaces      +<--------- Use Cases          Entities
 +-------------------+
 
+------------------------------------------------------------
 
+Observaciones
 
+- El proyecto, en general, carece de un control adecuado en el manejo de excepciones.
+  Muchas excepciones no están siendo gestionadas de forma efectiva en el código, lo que podría provocar errores en tiempo de ejecución.
 
-
-The project, in general, lacks proper control in terms of exception handling. 
-Many exceptions that occur are not being managed effectively within the code, which could lead to runtime issues. 
-Additionally, it contains a significant amount of text in my native language(Spanish), which might need to be standardized.
-
-It’s worth noting that this project was my first mvc proyect and this proyect developed in just one or two weeks, which may explain some of the current limitations and errors.
+- Cabe destacar que este fue mi primer proyecto MVC, desarrollado en solo una o dos semanas, lo que puede explicar algunas de sus limitaciones y errores actuales.
